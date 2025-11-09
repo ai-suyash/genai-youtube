@@ -10,5 +10,5 @@ This repo hosts code and assets from our YouTube tutorials.
 
 ## All tutorials
 ### Function Calling (Gemini)
-- **[Part 1](https://youtu.be/VIDEO1)** — [Code](tutorials/function-calling/)
+- Part 1 - **[Inside Function Calling: How LLMs Take Real-World Actions](https://youtu.be/VIDEO1)** — [Code](tutorials/function-calling/)
 
