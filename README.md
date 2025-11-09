@@ -1,2 +1,6 @@
-# genai-youtube
-Code for our GenAI YouTube tutorials. Browse by series (ADK, Gemini, Fundamentals), run examples, or 1-click download ZIPs per episode.
+# GenAI YouTube — Tutorials & Code
+
+This repo hosts code and assets from our YouTube tutorials.
+
+📺 Watch the channel: https://youtube.com/@suyashai  
+▶️ Playlists: https://youtube.com/@suyashai/playlists
