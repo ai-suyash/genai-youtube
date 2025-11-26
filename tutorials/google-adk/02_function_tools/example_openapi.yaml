@@ -1,0 +1,109 @@
+openapi: 3.0.0                               # OpenAPI spec version used by this document
+info:                                        # High-level information/metadata about the API
+  title: ToDo API                            # Short name of the API
+  description: A simple API to manage a to-do list  # Longer summary shown in docs
+  version: 1.0.0                             # Semantic version of this API description
+servers:                                     # One or more base URLs where the API is hosted
+  - url: https://api.example.com/v1          # Base URL clients should prefix to paths
+
+paths:                                       # Map of endpoint paths and their operations
+  /todos:                                    # Collection endpoint for to-do items
+    get:                                     # HTTP GET operation for /todos - Read data (no changes on the server)
+      summary: List all to-dos               # One-line human summary for the operation
+      operationId: listTodos                 # Unique, stable name (great tool name for agents)
+      responses:                             # Possible HTTP responses for this operation
+        '200':                               # HTTP status code 200 OK
+          description: A list of to-do items # Human description of the response
+          content:                           # Media types returned by this response
+            application/json:                # JSON payload
+              schema:                        # JSON Schema describing the response body
+                type: array                  # Response is an array
+                items:                       # Each array element conforms to this schema
+                  $ref: '#/components/schemas/Todo'  # Reuse the Todo schema via $ref
+    post:                                    # HTTP POST operation for /todos - Create a new resource
+      summary: Create a new to-do            # One-line summary of the create operation
+      operationId: createTodo                # Unique operation name (tool name)
+      requestBody:                           # Body clients must send when creating a to-do
+        required: true                       # Request body is mandatory
+        content:                             # Media types accepted for the request body
+          application/json:                  # JSON input
+            schema:                          # JSON Schema describing the request body
+              $ref: '#/components/schemas/TodoInput' # Use the TodoInput schema for creation
+      responses:                             # Possible responses for POST /todos
+        '201':                               # 201 Created indicates a new resource
+          description: The created to-do     # Human description of the created resource
+          content:                           # Media types returned in the response
+            application/json:                # JSON payload
+              schema:                        # Schema of the created to-do
+                $ref: '#/components/schemas/Todo'  # Reuse the Todo schema
+
+  /todos/{id}:                               # Item endpoint addressing a single to-do by ID
+    get:                                     # HTTP GET operation for /todos/{id}
+      summary: Get a single to-do by ID      # One-line description
+      operationId: getTodo                   # Unique name for this operation
+      parameters:                            # List of non-body inputs for the operation
+        - name: id                           # Parameter name as it appears in the path
+          in: path                           # Parameter location (path segment) - part of the URL
+          required: true                     # Path params must be provided
+          schema: { type: string }           # Basic schema: ID is a string
+      responses:                             # Possible responses
+        '200':                               # 200 OK with the requested resource
+          description: The requested to-do item   # Human description
+          content:                           # Media types returned
+            application/json:                # JSON output
+              schema:                        # Schema of the returned body
+                $ref: '#/components/schemas/Todo'  # Reuse Todo schema
+        '404':                               # 404 Not Found if the ID doesn't exist
+          description: To-do not found       # Human description for the error case
+    put:                                     # HTTP PUT operation for /todos/{id} - Replace an existing item
+      summary: Update a to-do                # One-line description
+      operationId: updateTodo                # Unique name for this update operation
+      parameters:                            # Parameters required by this operation
+        - name: id                           # The to-do identifier to update
+          in: path                           # It comes from the path placeholder
+          required: true                     # Must be supplied
+          schema: { type: string }           # String ID schema
+      requestBody:                           # Body containing updated fields
+        required: true                       # Body is mandatory for updates
+        content:                             # Accepted media types
+          application/json:                  # JSON input
+            schema:                          # Schema for update payload
+              $ref: '#/components/schemas/TodoInput' # Reuse TodoInput for updates
+      responses:                             # Possible responses
+        '200':                               # 200 OK with updated resource
+          description: The updated to-do     # Human description of success
+          content:                           # Media types
+            application/json:                # JSON response
+              schema:                        # Schema of updated object
+                $ref: '#/components/schemas/Todo'  # Reuse Todo schema
+        '404':                               # 404 if resource does not exist
+          description: To-do not found       # Human description
+    delete:                                  # HTTP DELETE operation for /todos/{id}
+      summary: Delete a to-do                # One-line description
+      operationId: deleteTodo                # Unique name for the delete operation
+      parameters:                            # Inputs to the operation
+        - name: id                           # ID of the to-do to delete
+          in: path                           # Supplied in the URL path
+          required: true                     # Must be provided
+          schema: { type: string }           # String ID schema
+      responses:                             # Possible responses
+        '204':                               # 204 No Content indicates successful deletion
+          description: To-do deleted successfully # No body expected
+        '404':                               # 404 Not Found if ID missing
+          description: To-do not found       # Human description
+
+components:                                  # Reusable parts referenced elsewhere
+  schemas:                                   # Reusable data models (JSON Schema)
+    Todo:                                    # Schema for a full to-do item
+      type: object                           # It's a JSON object
+      properties:                            # Fields present on the object
+        id: { type: string, example: "abc123" }  # Unique identifier with example value
+        title: { type: string }              # Short description of the task
+        completed: { type: boolean }         # Completion flag
+      required: [id, title, completed]       # Fields that must appear in the object
+    TodoInput:                               # Schema for create/update requests
+      type: object                           # It's a JSON object
+      properties:                            # Allowed input fields
+        title: { type: string }              # Title text to set
+        completed: { type: boolean }         # Completion state to set
+      required: [title, completed]           # Fields required in the input payload
