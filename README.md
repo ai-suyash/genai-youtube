@@ -6,7 +6,7 @@ This repo hosts code and assets from our YouTube tutorials.
 ▶️ Playlists: https://youtube.com/@suyashai/playlists
 
 
-## All tutorials
+## All Video tutorials
 ### Google Agent Developmen Kit (ADK)
 - ADK #1 - **[Build Your First AI Agent with Google ADK | Hands-On Walkthrough](https://youtu.be/NU05aTvRiJM)** (YT Video goes live: Dec 1, 2025, 4 PM ET) — [Code](tutorials/google-adk/01_first_agent) 
 
