@@ -12,6 +12,8 @@ This repo hosts code and assets from our YouTube tutorials.
 
 - ADK #2 - **[Function Tools in Google ADK | Build a Finance Assistant](https://youtu.be/NnQsX5FiOak)** (YT Video goes live: Dec 8, 2025, 4 PM ET) — [Code](tutorials/google-adk/02_function_tools)
 
+- ADK #3 - **[OpenAPI Tools in Google ADK | Connect Your Agent to REST APIs](https://youtu.be/q3jm48R0Brw)** (YT Video goes live: Dec 15, 2025, 4 PM ET) — [Code](tutorials/google-adk/03_OpenAPI_tools)
+
 
 ### Function Calling (with Gemini)
 - Part 1 - **[Inside Function Calling: How LLMs Take Real-World Actions](https://youtu.be/VIDEO1)** — [Code](tutorials/function-calling/)

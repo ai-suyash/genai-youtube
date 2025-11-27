@@ -1,4 +1,4 @@
-openapi: 3.0.0                               # OpenAPI spec version used by this document
+openapi: 3.0.0                             # OpenAPI spec version used by this document
 info:                                        # High-level information/metadata about the API
   title: ToDo API                            # Short name of the API
   description: A simple API to manage a to-do list  # Longer summary shown in docs
