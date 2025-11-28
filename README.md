@@ -14,6 +14,7 @@ This repo hosts code and assets from our YouTube tutorials.
 
 - ADK #3 - **[OpenAPI Tools in Google ADK | Connect Your Agent to REST APIs](https://youtu.be/q3jm48R0Brw)** (YT Video goes live: Dec 15, 2025, 4 PM ET) — [Code](tutorials/google-adk/03_OpenAPI_tools)
 
+- ADK #4 - **[Sequential Agents in Google ADK | Podcast Transcript Assistant](https://youtu.be/WfZSHQrD14Y)** (YT Video goes live: Dec 22, 2025, 4 PM ET) — [Code](tutorials/google-adk/04_sequential_agents)
 
 ### Function Calling (with Gemini)
 - Part 1 - **[Inside Function Calling: How LLMs Take Real-World Actions](https://youtu.be/VIDEO1)** — [Code](tutorials/function-calling/)
