@@ -16,7 +16,9 @@ This repo hosts code and assets from our YouTube tutorials.
 
 - ADK #4 - **[Sequential Agents in Google ADK | Podcast Transcript Assistant](https://youtu.be/WfZSHQrD14Y)** — [Code](tutorials/google-adk/04_sequential_agents)
 
-- ADK #5 - **[Parallel Agents in Google ADK | Multi-Agent Travel Planner](https://youtu.be/czNGyHkKdew)** (YT Video goes live: Dec 29, 2025, 4 PM ET) — [Code](tutorials/google-adk/05_parallel_agents)
+- ADK #5 - **[Parallel Agents in Google ADK | Multi-Agent Travel Planner](https://youtu.be/czNGyHkKdew)** — [Code](tutorials/google-adk/05_parallel_agents)
+
+- ADK #6 - **[Loop Agents in Google ADK | Critic-Refiner Pattern](https://youtu.be/QGcVTjeQYXA)** (YT Video goes live: Jan 05, 2026, 4 PM ET) — [Code](tutorials/google-adk/06_loop_agents)
 
 ### Function Calling (with Gemini)
 - Part 1 - **[Inside Function Calling: How LLMs Take Real-World Actions](https://youtu.be/VIDEO1)** — [Code](tutorials/function-calling/)
