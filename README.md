@@ -7,7 +7,7 @@ This repo hosts code and assets from our YouTube tutorials.
 
 
 ## All Video tutorials
-### Google Agent Developmen Kit (ADK)
+### Google Agent Development Kit (ADK)
 - ADK #1 - **[Build Your First AI Agent with Google ADK | Hands-On Walkthrough](https://youtu.be/NU05aTvRiJM)** — [Code](tutorials/google-adk/01_first_agent) 
 
 - ADK #2 - **[Function Tools in Google ADK | Build a Finance Assistant](https://youtu.be/NnQsX5FiOak)** — [Code](tutorials/google-adk/02_function_tools)
