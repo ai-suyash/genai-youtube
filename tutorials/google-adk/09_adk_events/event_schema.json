@@ -1,0 +1,386 @@
+{
+  "Event": {
+    "modelVersion": "(string|null) Model version identifier reported by the backend for the response that produced this event (when available).",
+    "id": "(string) Unique identifier for this event instance.",
+    "timestamp": "(number) Event timestamp as a numeric value; exact units/representation are runtime-defined.",
+    "author": "(string) Who produced the event (e.g., 'user', 'model', or an agent name).",
+    "invocationId": "(string) Identifier for the overall invocation/run that produced this event.",
+    "interactionId": "(string|null) Optional correlation identifier for grouping events; semantics are implementation-specific.",
+    "branch": "(string|null) Branch identifier/path used when the runtime forks execution paths (hierarchical branch lineage).",
+    "longRunningToolIds": "(array[string]|null) Set of long-running tool IDs associated with this event (unique items).",
+    "content": {
+      "role": "(string|null) Producer role for the content (must be either 'user' or 'model' when set).",
+      "parts": [
+        {
+          "text": "(string|null) Plain text content for the part (may include code as text).",
+          "thought": "(boolean|null) Indicates this part is a model 'thought' when provided by the model/runtime.",
+          "thoughtSignature": "(string|null, base64url) Opaque signature associated with thought content (when provided).",
+          "inlineData": {
+            "data": "(string|null, base64url) Inline media bytes.",
+            "mimeType": "(string|null) IANA MIME type of the media (e.g., image/png).",
+            "displayName": "(string|null) Optional label/filename for the blob."
+          },
+          "fileData": {
+            "fileUri": "(string|null) URI reference to the media object.",
+            "mimeType": "(string|null) IANA MIME type of the referenced media.",
+            "displayName": "(string|null) Optional label/filename for the referenced file."
+          },
+          "videoMetadata": {
+            "startOffset": "(string|null) Optional start time offset of the video segment.",
+            "endOffset": "(string|null) Optional end time offset of the video segment.",
+            "fps": "(number|null) Optional frame rate of the video provided to the model."
+          },
+          "mediaResolution": {
+            "level": {
+              "description": "(enum|null) Media resolution level that controls how media is encoded/tokenized.",
+              "values": {
+                "MEDIA_RESOLUTION_UNSPECIFIED": "(string) Resolution level not specified.",
+                "MEDIA_RESOLUTION_LOW": "(string) Lower-fidelity encoding for cost/performance.",
+                "MEDIA_RESOLUTION_MEDIUM": "(string) Balanced-fidelity encoding.",
+                "MEDIA_RESOLUTION_HIGH": "(string) Higher-fidelity encoding.",
+                "MEDIA_RESOLUTION_ULTRA_HIGH": "(string) Highest-fidelity encoding (most expensive)."
+              }
+            },
+            "numTokens": "(integer|null) Requested sequence length/token budget used to encode/tokenize the media input."
+          },
+          "executableCode": {
+            "code": "(string|null) Source code to execute.",
+            "language": {
+              "description": "(enum|null) Programming language of the code.",
+              "values": {
+                "LANGUAGE_UNSPECIFIED": "(string) Language not specified.",
+                "PYTHON": "(string) Python code."
+              }
+            }
+          },
+          "codeExecutionResult": {
+            "outcome": {
+              "description": "(enum|null) Outcome of code execution.",
+              "values": {
+                "OUTCOME_UNSPECIFIED": "(string) Outcome not specified.",
+                "OUTCOME_OK": "(string) Execution succeeded.",
+                "OUTCOME_FAILED": "(string) Execution failed.",
+                "OUTCOME_DEADLINE_EXCEEDED": "(string) Execution timed out."
+              }
+            },
+            "output": "(string|null) Captured stdout/stderr and/or failure details from execution."
+          },
+          "functionCall": {
+            "id": "(string|null) Identifier used to correlate this function call with its corresponding response (when provided).",
+            "name": "(string|null) Name of the function/tool to execute.",
+            "args": "(object|null) Structured JSON object containing the function arguments.",
+            "partialArgs": [
+              {
+                "jsonPath": "(string|null) JSONPath (RFC 9535) pointing to the argument location being streamed.",
+                "stringValue": "(string|null) Streamed string fragment value.",
+                "numberValue": "(number|null) Streamed numeric fragment value.",
+                "boolValue": "(boolean|null) Streamed boolean fragment value.",
+                "nullValue": "(string|null) Indicates the streamed value is null (e.g., 'NULL_VALUE').",
+                "willContinue": "(boolean|null) True if more fragments for this jsonPath are expected."
+              }
+            ],
+            "willContinue": "(boolean|null) True if additional messages will continue this function call."
+          },
+          "functionResponse": {
+            "willContinue": "(boolean|null) True if the tool will produce more responses (generator/streaming style).",
+            "scheduling": {
+              "description": "(enum|null) How the runtime should schedule delivery of this response.",
+              "values": {
+                "SCHEDULING_UNSPECIFIED": "(string) Scheduling not specified.",
+                "SILENT": "(string) Do not surface the tool response as user-visible content.",
+                "WHEN_IDLE": "(string) Deliver when the model/runtime is idle.",
+                "INTERRUPT": "(string) Deliver immediately, interrupting current generation if needed."
+              }
+            },
+            "parts": [
+              {
+                "inlineData": {
+                  "mimeType": "(string|null) IANA MIME type of the returned media.",
+                  "data": "(string|null, base64url) Inline media bytes for the returned media.",
+                  "displayName": "(string|null) Optional label/filename."
+                },
+                "fileData": {
+                  "fileUri": "(string|null) URI reference to the returned media object.",
+                  "mimeType": "(string|null) IANA MIME type of the returned media.",
+                  "displayName": "(string|null) Optional label/filename."
+                }
+              }
+            ],
+            "id": "(string|null) Identifier linking this response to the corresponding functionCall (when provided).",
+            "name": "(string|null) Name of the function/tool that produced this response.",
+            "response": "(object|null) Structured JSON object containing the tool output."
+          }
+        }
+      ]
+    },
+    "actions": {
+      "skipSummarization": "(boolean|null) If true, indicates this event should be excluded from compaction/summarization.",
+      "stateDelta": "(object) Delta/patch to apply to session/agent state as a result of this event.",
+      "artifactDelta": "(object) Mapping of keys to integer deltas (per schema: additionalProperties are integers).",
+      "transferToAgent": "(string|null) Requests a handoff/transfer to another agent by name/ID.",
+      "escalate": "(boolean|null) Signals an escalation (e.g., to a human or higher-level handler).",
+      "requestedAuthConfigs": {
+        "<tool_or_resource_key>": {
+          "authScheme": "(APIKey|HTTPBase|HTTPBearer|OAuth2|OpenIdConnect|OpenIdConnectWithConfig)",
+          "rawAuthCredential": "(AuthCredential|null)",
+          "exchangedAuthCredential": "(AuthCredential|null)",
+          "credentialKey": "(string|null)"
+        }
+      },
+      "requestedToolConfirmations": {
+        "<tool_key>": {
+          "hint": "(string)",
+          "confirmed": "(boolean)",
+          "payload": "(any|null)"
+        }
+      },
+      "compaction": {
+        "startTimestamp": "(number)",
+        "endTimestamp": "(number)",
+        "compactedContent": {
+          "role": "(string|null) Producer role for the compacted content (when set, 'user' or 'model').",
+          "parts": [
+            {
+              "text": "(string|null) Compacted/summary text content.",
+              "inlineData": {
+                "data": "(string|null, base64url) Inline media bytes (if summary includes media).",
+                "mimeType": "(string|null) IANA MIME type of the inline media.",
+                "displayName": "(string|null) Optional label/filename."
+              },
+              "fileData": {
+                "fileUri": "(string|null) URI reference to summary media.",
+                "mimeType": "(string|null) IANA MIME type of the referenced media.",
+                "displayName": "(string|null) Optional label/filename."
+              },
+              "functionCall": {
+                "id": "(string|null)",
+                "name": "(string|null)",
+                "args": "(object|null)"
+              },
+              "functionResponse": {
+                "id": "(string|null)",
+                "name": "(string|null)",
+                "response": "(object|null)"
+              }
+            }
+          ]
+        }
+      },
+      "endOfAgent": "(boolean|null) Signals the agent run should end after this event.",
+      "agentState": "(object|null) Snapshot/metadata representing the agent’s internal state at this point.",
+      "rewindBeforeInvocationId": "(string|null) Signals rewinding runtime state to before a specific invocation ID."
+    },
+    "partial": "(boolean|null) True when this event is a streamed/partial chunk rather than a complete event.",
+    "turnComplete": "(boolean|null) True when this event marks completion of the overall interaction/turn.",
+    "finishReason": {
+      "description": "(enum|null) Why the model stopped generating output for this response.",
+      "values": {
+        "FINISH_REASON_UNSPECIFIED": "(string)",
+        "STOP": "(string)",
+        "MAX_TOKENS": "(string)",
+        "SAFETY": "(string)",
+        "RECITATION": "(string)",
+        "LANGUAGE": "(string)",
+        "OTHER": "(string)",
+        "BLOCKLIST": "(string)",
+        "PROHIBITED_CONTENT": "(string)",
+        "SPII": "(string)",
+        "MALFORMED_FUNCTION_CALL": "(string)",
+        "IMAGE_SAFETY": "(string)",
+        "UNEXPECTED_TOOL_CALL": "(string)",
+        "IMAGE_PROHIBITED_CONTENT": "(string)",
+        "NO_IMAGE": "(string)",
+        "IMAGE_RECITATION": "(string)",
+        "IMAGE_OTHER": "(string)"
+      }
+    },
+    "interrupted": "(boolean|null) True if generation was interrupted (cancelled, superseded, or interrupted by runtime).",
+    "errorCode": "(string|null) Short error identifier/category for failures during event generation/handling.",
+    "errorMessage": "(string|null) Human-readable error description.",
+    "customMetadata": "(object|null) Free-form key/value metadata for application-specific extensions.",
+    "usageMetadata": {
+      "promptTokenCount": "(integer|null) Total number of tokens in the prompt input.",
+      "candidatesTokenCount": "(integer|null) Total number of tokens in the generated candidates.",
+      "toolUsePromptTokenCount": "(integer|null) Tokens contributed by tool outputs used as model input.",
+      "thoughtsTokenCount": "(integer|null) Tokens counted as model 'thoughts' output (when applicable).",
+      "cachedContentTokenCount": "(integer|null) Tokens from cached content used for the request.",
+      "totalTokenCount": "(integer|null) Total tokens for the request.",
+      "trafficType": {
+        "description": "(enum|null) Traffic type for this request (when reported).",
+        "values": {
+          "TRAFFIC_TYPE_UNSPECIFIED": "(string)",
+          "ON_DEMAND": "(string)",
+          "PROVISIONED_THROUGHPUT": "(string)"
+        }
+      },
+      "promptTokensDetails": [
+        {
+          "modality": {
+            "description": "(enum|null) Which modality the token count refers to.",
+            "values": {
+              "MODALITY_UNSPECIFIED": "(string)",
+              "TEXT": "(string)",
+              "IMAGE": "(string)",
+              "VIDEO": "(string)",
+              "AUDIO": "(string)",
+              "DOCUMENT": "(string)"
+            }
+          },
+          "tokenCount": "(integer|null)"
+        }
+      ],
+      "candidatesTokensDetails": [
+        {
+          "modality": "(enum|null)",
+          "tokenCount": "(integer|null)"
+        }
+      ],
+      "cacheTokensDetails": [
+        {
+          "modality": "(enum|null)",
+          "tokenCount": "(integer|null)"
+        }
+      ],
+      "toolUsePromptTokensDetails": [
+        {
+          "modality": "(enum|null)",
+          "tokenCount": "(integer|null)"
+        }
+      ]
+    },
+    "liveSessionResumptionUpdate": {
+      "newHandle": "(string|null) Handle representing resumable state that can be used to reconnect.",
+      "resumable": "(boolean|null) True if reconnecting/resuming from this point is supported without losing state.",
+      "lastConsumedClientMessageIndex": "(integer|null) Last client message index included in the resumable state."
+    },
+    "inputTranscription": {
+      "text": "(string|null) Transcribed text from input audio.",
+      "finished": "(boolean|null) True when transcription for the segment is complete."
+    },
+    "outputTranscription": {
+      "text": "(string|null) Transcribed text from model audio output.",
+      "finished": "(boolean|null) True when transcription for the segment is complete."
+    },
+    "avgLogprobs": "(number|null) Average log probability across generated tokens when logprobs are enabled.",
+    "logprobsResult": {
+      "chosenCandidates": [
+        {
+          "token": "(string|null)",
+          "tokenId": "(integer|null)",
+          "logProbability": "(number|null)"
+        }
+      ],
+      "topCandidates": [
+        {
+          "candidates": [
+            {
+              "token": "(string|null)",
+              "tokenId": "(integer|null)",
+              "logProbability": "(number|null)"
+            }
+          ]
+        }
+      ]
+    },
+    "cacheMetadata": {
+      "cache_name": "(string|null) Resource name of the cached content entry (when active).",
+      "expire_time": "(number|null) Unix timestamp when the cache entry expires (when active).",
+      "fingerprint": "(string) Hash used to detect changes in cacheable contents.",
+      "invocations_used": "(integer|null) Count of how many times this cache entry was reused (when active).",
+      "contents_count": "(integer) Number of cached contents (active) or total request contents (fingerprint-only).",
+      "created_at": "(number|null) Unix timestamp when the cache entry was created (when active)."
+    },
+    "citationMetadata": {
+      "citations": [
+        {
+          "startIndex": "(integer|null) Start index into the output where the citation applies.",
+          "endIndex": "(integer|null) End index into the output where the citation applies.",
+          "title": "(string|null) Title of the cited source.",
+          "uri": "(string|null) URI of the cited source.",
+          "license": "(string|null) License information for the cited content.",
+          "publicationDate": {
+            "year": "(integer|null)",
+            "month": "(integer|null)",
+            "day": "(integer|null)"
+          }
+        }
+      ]
+    },
+    "groundingMetadata": {
+      "googleMapsWidgetContextToken": "(string|null) Token used to render Google Maps contextual widgets (when Maps grounding is involved).",
+      "retrievalQueries": "(array[string]|null) Queries executed by retrieval tools (when applicable).",
+      "webSearchQueries": "(array[string]|null) Web search queries used for follow-up grounding searches (when applicable).",
+      "retrievalMetadata": {
+        "googleSearchDynamicRetrievalScore": "(number|null) Score (0–1) indicating whether web search could help answer the prompt."
+      },
+      "searchEntryPoint": {
+        "renderedContent": "(string|null) Embeddable snippet describing search attribution.",
+        "sdkBlob": "(string|null, base64url) Encoded payload used by SDK/UI integrations."
+      },
+      "sourceFlaggingUris": [
+        {
+          "flagContentUri": "(string|null)",
+          "sourceId": "(string|null)"
+        }
+      ],
+      "groundingChunks": [
+        {
+          "web": {
+            "domain": "(string|null)",
+            "title": "(string|null)",
+            "uri": "(string|null)"
+          },
+          "retrievedContext": {
+            "documentName": "(string|null)",
+            "text": "(string|null)",
+            "title": "(string|null)",
+            "uri": "(string|null)",
+            "ragChunk": {
+              "text": "(string|null)",
+              "pageSpan": {
+                "firstPage": "(integer|null)",
+                "lastPage": "(integer|null)"
+              }
+            }
+          },
+          "maps": {
+            "placeId": "(string|null)",
+            "text": "(string|null)",
+            "title": "(string|null)",
+            "uri": "(string|null)",
+            "placeAnswerSources": {
+              "flagContentUri": "(string|null)",
+              "reviewSnippets": [
+                {
+                  "authorAttribution": {
+                    "displayName": "(string|null)",
+                    "photoUri": "(string|null)",
+                    "uri": "(string|null)"
+                  },
+                  "flagContentUri": "(string|null)",
+                  "googleMapsUri": "(string|null)",
+                  "relativePublishTimeDescription": "(string|null)",
+                  "review": "(string|null)",
+                  "reviewId": "(string|null)",
+                  "title": "(string|null)"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "groundingSupports": [
+        {
+          "confidenceScores": "(array[number]|null) Confidence scores (0–1).",
+          "groundingChunkIndices": "(array[integer]|null) Indices into groundingChunks used for this claim.",
+          "segment": {
+            "partIndex": "(integer|null)",
+            "startIndex": "(integer|null)",
+            "endIndex": "(integer|null)",
+            "text": "(string|null)"
+          }
+        }
+      ]
+    }
+  }
+}
