@@ -1,0 +1,9 @@
+[project]
+name = "11-adk-evaluation"
+version = "0.1.0"
+description = "ADK evaluation workflow tutorial"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "google-adk[eval]==1.23.0",
+]

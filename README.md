@@ -26,8 +26,9 @@ This repo hosts code and assets from our YouTube tutorials.
 
 - ADK #9 - **[Events in Google ADK | Debug Tool Calls, Timeline & State Changes (Dev UI Walkthrough)](https://youtu.be/kGFvc7E6KV8)** — [Code](tutorials/google-adk/09_adk_events)
 
-- ADK #10 - **[Context Management in Google ADK | Session vs State vs Memory (Concept Walkthrough)](https://youtu.be/UncyNladiX0)** - (YT Video goes live: February 11, 2026, 4 PM ET)
+- ADK #10 - **[Context Management in Google ADK | Session vs State vs Memory (Concept Walkthrough)](https://youtu.be/UncyNladiX0)**
 
+- ADK #11 - **[Evaluating AI Agents in Google ADK | Hands-On Demo)](https://youtu.be/kJfzjQyshbA)** (YT Video goes live: February 25, 2026, 4 PM ET) - [Code](tutorials/google-adk/11_adk_evaluation)
 
 
 ### Function Calling (with Gemini)

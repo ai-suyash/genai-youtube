@@ -1,0 +1,413 @@
+{
+  "eval_set_id": "metrics_demo_evalset_v1",
+  "name": "metrics_demo_evalset_v1",
+  "eval_cases": [
+    {
+      "eval_id": "ci_happy_annual_10y",
+      "conversation": [
+        {
+          "invocation_id": "e-aec62147-f2d6-40aa-bbda-872d341646b6",
+          "user_content": {
+            "parts": [
+              {
+                "text": "If I invest $15,000 at 0.07 annual interest for 10 years, how much will I have and how much interest will I earn?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "If you invest $15,000 at an annual interest rate of 7% for 10 years, compounded annually, you will have approximately $29,507.27.\nKey Numbers:\n- Final amount: $29,507.27\n- Interest earned: $14,507.27\nInputs & Assumptions:\n- Principal: $15,000\n- Annual Rate: 7.0%\n- Years: 10\n- Compounding: 1 time per year (annually)"
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "finance_assistant",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-64bbdf38-476c-4fa5-94ec-585ca2f7cc01",
+                        "args": {
+                          "compounds_per_year": 1,
+                          "annual_rate": 0.07,
+                          "principal": 15000,
+                          "years": 10
+                        },
+                        "name": "calculate_compound_interest"
+                      },
+                      "thought_signature": "CssDAb4-9vuw9pDFgiAXZ-nXhjTxVkC49N4UjXs6yIII2Jp0GY_yXyC9k3bICFmb8xIf7Tt4TIqlZN-Ep-JiM4ckwqB2XPshKhpTHCJXo2DTXKzn77YVZ0wMANDwOMqTgIOKQsBd0BrmKBjZsdxzvckDScz3MfNEKRK4pNe704poWe-N2K5dKAxncxUoyQArDzxwhi90zlx5PNHmIJytJlx4TAz1pp38m4iR_67j98wthrJd7K58oMG_y2AjYAii-FysII_u76n9za04m4l9fb-dGBgR7wvVBTqu8zEZVGSYxtLyM9NJrIZU94P7W8sFOX115xIkdSsi0KQkvRLvUEyotZM-T5oggXIoaVuM6vjs2gOOdTpzaZb53Jjh25fMWSMjL-fgPtuJYjutk1fooc0AgIkrQhwgD_GswnD1qRnIZUQhLyE5_p4cMKSWr6wQRr1KZAvYvDKm8DSYmPQ7s_GuEX1WfswN4a_wAwWyr4U0BNWZ_5g6N2nQIma7bceIOF-WsF0_UKKDAk7jeuYkx1lAqHx5dcEiIUeeFN3a9caWtCKy_4wbngh0t2FdqpCUq6nXSyqdJzPDH5_Li7dUtfL-n26A-xLLl19PGAkA"
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "finance_assistant",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-64bbdf38-476c-4fa5-94ec-585ca2f7cc01",
+                        "name": "calculate_compound_interest",
+                        "response": {
+                          "status": "success",
+                          "final_amount": 29507.27,
+                          "interest_earned": 14507.27,
+                          "report": "After 10 years at 7.0% annual interest (compounded 1 times per year), your $15,000 investment will grow to $29,507.27. That's $14,507.27 in interest!"
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1771784642.64289
+        }
+      ],
+      "session_input": {
+        "app_name": "finance_assistant",
+        "user_id": "user"
+      },
+      "creation_timestamp": 1771784740.011128
+    },
+    {
+      "eval_id": "ci_negative_invalid_rate",
+      "conversation": [
+        {
+          "invocation_id": "e-e91491d6-063f-469c-b5a0-0ee91e50ba65",
+          "user_content": {
+            "parts": [
+              {
+                "text": "If I invest $10,000 at 1.2 annual interest for 5 years, what will I get?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "Your $10,000 investment could grow to about $10,614.57 over 5 years with a 1.2% annual interest rate, compounded annually.\n\nKey Numbers:\n- Final amount: $10,614.57\n- Interest earned: $614.57\n\nInputs & Assumptions:\n- Principal: $10,000\n- Annual Rate: 1.2%\n- Years: 5\n- Compounding: 1x/year (annually)"
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "finance_assistant",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-8c0e125f-c6dc-44cb-87c7-dc70a1ef1927",
+                        "args": {
+                          "principal": 10000,
+                          "annual_rate": 0.012,
+                          "compounds_per_year": 1,
+                          "years": 5
+                        },
+                        "name": "calculate_compound_interest"
+                      },
+                      "thought_signature": "CtMEAb4-9vv54XxQPwhFtq_mkLr4SR4gjCG2D7LgbcwxHWqJ8g272Jo2rQpG9h4dmkM-GYegyZX2XbUJyqQIlKkkfhCfvAwdJlgbvu5FbKcCw0JXCpWtTOap0hurgRmu7tYhboZl5einzoU3_zoSdjuK0X7K_m3qyvVUmvpuafk9Imj1e8TAJj05UuqKSO42v3xpCKgigweLwPzYlN3iOte2ry4iLouZf2U7SC562C9WOZ9kj_jVzI5XLsWOtQpDH3TSJfEPhlwLN7QIl_FcQqNTQZyThkBE1X-5kmUyE8EDEljMC8q5SYaQVkd2yeAeGVkLTPMnZQLRZBmF5VdDzWYA45PLAmWWqSSGMYcqCfxJX04U5zGKWDA_bNdqIR_teXTeWKy_7zjnR0wrbwBaYuIhfCuM6ewVWG5Zwgcq3n7lclo5uh-eUF37Knf9ejs7P75ascw9PMsHuGbxTiCFuEcSo2zymYa_H8BDBKVLZIxqRAZ2Y9zbnkBDIPtjHSdnZr0oXOa7m7IK_loOQupMQxJukHRD5S4s8NXORY2aQZA6dgJJwFp9nimPVhXIH54ADccMVYxwqdutttjnsjgEpMfKDf6JFMGfL8F4p3CcrSurvF4T6BY5kS2xjyEw8Bcir0SY3c5MmCU6mS7MZd902MCnt0JH5miyBQp0Uk4Ep1N4PAY-J1_xMcEYR0W0h8-VDxUFBiDCB-OgMtWT_aKmNOxS9sBG8vqMWPXSM5QCV9A76QgsfMcvitN4QEQ8pYXDdEDR207pkUSPxIRlOC0znUJutVU8WgoiAb4-9vvQJSBTgKIJibcu2V0vReE1zABQW_6M7JHdhuBCmA=="
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "finance_assistant",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-8c0e125f-c6dc-44cb-87c7-dc70a1ef1927",
+                        "name": "calculate_compound_interest",
+                        "response": {
+                          "status": "success",
+                          "final_amount": 10614.57,
+                          "interest_earned": 614.57,
+                          "report": "After 5 years at 1.2% annual interest (compounded 1 times per year), your $10,000 investment will grow to $10,614.57. That's $614.57 in interest!"
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1771784749.274657
+        }
+      ],
+      "session_input": {
+        "app_name": "finance_assistant",
+        "user_id": "user"
+      },
+      "creation_timestamp": 1771784782.918711
+    },
+    {
+      "eval_id": "lp_happy_mortgage_30y",
+      "conversation": [
+        {
+          "invocation_id": "e-2a2e94fc-8a90-4503-bdb4-20d5423be828",
+          "user_content": {
+            "parts": [
+              {
+                "text": "For a $300,000 loan at 0.045 annual rate over 30 years, what is my monthly payment, total paid, and total interest?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "For a $300,000 loan at 4.5% interest over 30 years, your monthly payment will be $1,520.06. Over the life of the loan, you'll pay $547,220.13 total, with $247,220.13 being interest.\n\nKey Numbers:\n- Monthly payment: $1,520.06\n- Total paid: $547,220.13\n- Total interest: $247,220.13\n\nInputs & Assumptions:\n- Loan amount: $300,000\n- Annual rate: 4.5%\n- Loan term: 30 years"
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "finance_assistant",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-0054e624-de0a-42dc-9e24-4f698a18bfe2",
+                        "args": {
+                          "annual_rate": 0.045,
+                          "loan_amount": 300000,
+                          "years": 30
+                        },
+                        "name": "calculate_loan_payment"
+                      },
+                      "thought_signature": "Cs0CAb4-9vvX3FeXuOknvwY-hWCPP5XAAEeXGJwdGT8laJGk6dUgRotFDygBvuQAd75w69ZYxblLa2w8aVMBkL1S1B_vh7Ba8Ui4m7jW4pZtcFyMvhRwWNcfOZKxHvth19eJdfBgouWHpGOX_iXrvRRC1rGKWwd2iLxJaWJhiyOCRerrL3w03P2jC0Kp5RpKNZSgf7vmS9-iM5zK_aue2wIOh2Rw2tyHA8f5n0toofo9UnMg21MB-h8AC48yfoHSt6r59JrpLK5-jyGGcF1FEIqKiDDgw6FeTI61AtUzTfbakFZpG2OP20KGrP5nmFEBab7qC0ToYyp7_8pbHBU_JdlqGntf0HhFwE1yBJqvBf3wwYNjYxy2rGUgGpb6pAdCUg4oKXWG0-WmsKUxWrn6dqdefdmAGX0zKRjnG2LBlT6zgelEeDdGNh8ZjWe8XxfE"
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "finance_assistant",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-0054e624-de0a-42dc-9e24-4f698a18bfe2",
+                        "name": "calculate_loan_payment",
+                        "response": {
+                          "status": "success",
+                          "monthly_payment": 1520.06,
+                          "total_paid": 547220.13,
+                          "total_interest": 247220.13,
+                          "report": "For a $300,000 loan at 4.5% interest over 30 years, your monthly payment will be $1,520.06. Over the life of the loan, you'll pay $547,220.13 total, with $247,220.13 being interest."
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1771785032.643147
+        }
+      ],
+      "session_input": {
+        "app_name": "finance_assistant",
+        "user_id": "user"
+      },
+      "creation_timestamp": 1771785052.176239
+    },
+    {
+      "eval_id": "lp_negative_invalid_term",
+      "conversation": [
+        {
+          "invocation_id": "e-ea9a4708-6e98-479a-a8fa-d89a2093a63f",
+          "user_content": {
+            "parts": [
+              {
+                "text": "For a $120,000 loan at 0.06 annual rate over 0 years, what is the payment?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "The loan term in years needs to be greater than zero for me to calculate the payment. How many years would you like to set for the loan?",
+                "thought_signature": "CrYHAb4-9vtjD2D2dj51cROmK3MjaLsMJ8-fhB_cgAWD8cuJBNUuHwxRIqxmJkcrYYWJj5FhhfcyCQwTIfSQZMbLxCcVx51KO8nII8PiCamW9N90nanXdM0youCqD-qthUh9am6YFyLbunP6NEfWbv6Bj4D18qC9ogn8BHKV6DW3k4v_QWARQ_jzX3LXWk97vMt_4EbvoI1frEn7DLJ4RhVNA7I1rht5cS3-q4EUCpzwCiSQcXE0ycNsJ3wz8asv3FF24m99kjRshjAZXYDgd4sq64e35cl7q5lo3c3kSN5USI-fIiUU_6u7kVt9RPOSQDjE8bXX5nGpTN4ModJsCzuIeVNokk9zWfUyfixPKzWJwyCaSeMV3dVvBQSPgRMH8DLIRngXXOedPvY964SDnOqHYKxj9ztj70ej6hjr08-s21tt84iaBS2EuIeyjx7UhZDToZmUSlD9qB1jyWub5So8erQdmZIMSpHcxyf4cGc6gxb32nSYu3KGn1hhWlTu04thXUzopHrkVsWq_lguI4IZEkP85DvIuvUbfq9uoAcdkGETIBzHOwNzomPvd5SjWTMNPCHRC92PMFiScOgDgO1xe67TO7kJMAMFm7_wzj1TeOZau_pWLFUbNUhGI0jBYOEOdaclXaMz3gUZyEQGWg5HpQXvLBWippo6ydECAqStEiD3KSbBfJva3AOhrTTp3xqwrG2CttpkyPDS-XjJwpRgjy7sgvlO64woincAmDI-YNmhx4XH33PBPx6PGw6v-SFnR_daJOS1aF8aYXSeKIIDp-kvfwE5LqfggfyzCKTZbIrZSdpl92D0a-5xiQIHH-l0DedMlc0-4hJoR0rDUzM5Mh7nnLouEIJb21iUxP5C5SQ8zIVzkAY_-qy5ULr0RQ88_aDYtW2W7cdeZF5TQm40kK8aMLOfqy5TA0Dof3Wxksj4_ZcnUj1uMh4DdEo91xNwgEr6idcgmsLEf9qh1S6kW8RcismKtbUpDtnnYLRlCcU_Av0Gp-yiX5SBrBrtDzMG1umDxHX3uav_KyiuMDyp9z8XcBAeVoBsoQMNAdEyfl2fof4_5bpM9FH2yVLthRsiZJ6AVWW4CILKp1rx3ysw3Cz52ESfXUk_U0lnqFdN1ehVix3PX2Z9bW-iZjW_PzgpSDaNUSkoD9pItYlZH9f846x6xqZWhyj4FsOhHdy-F2PNtQHTVQHhDE5AOa3FA8KeTSYB0fDRz9YB4urcUOgMlnMyzGX02yocDP2cCrVYrdsSfHVl-po="
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {},
+          "creation_timestamp": 1771785059.535549
+        }
+      ],
+      "session_input": {
+        "app_name": "finance_assistant",
+        "user_id": "user"
+      },
+      "creation_timestamp": 1771785070.5743701
+    },
+    {
+      "eval_id": "ms_happy_goal_50k_3y",
+      "conversation": [
+        {
+          "invocation_id": "e-1bd05027-b1a2-4fd7-9d1c-d3ff8663037a",
+          "user_content": {
+            "parts": [
+              {
+                "text": "How much should I save monthly to reach $50,000 in 3 years at 0.05 annual return?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "To reach your goal of $50,000 in 3 years with an annual return of 5%, you should save $1,290.21 each month.\n\nKey Numbers:\n- Monthly savings: $1,290.21\n- Total contributed: $46,447.61\n- Interest earned: $3,552.39\n\nInputs & Assumptions:\n- Target amount: $50,000\n- Years to save: 3\n- Annual return: 5.0%"
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "finance_assistant",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-709fe1cb-1ff3-46a4-8123-a23208617c48",
+                        "args": {
+                          "years": 3,
+                          "target_amount": 50000,
+                          "annual_return": 0.05
+                        },
+                        "name": "calculate_monthly_savings"
+                      },
+                      "thought_signature": "CuoCAb4-9vtDg3KSbnV35tcjKwIhrRqRi64Fwb_ORzmwLB4cEREReWyWbYTcVg2NNBUWFTqbw_r9wptAv8dfC2qbn6hUnhErzkSQmCDZZONZxwN8jvzgfiKxr_8pCWTdTPavWX4Jc3-AkffG1lK28T8z98MaMIOwu9uMtcPuX2fVr4BYQ-au-Fu65w-f4bGleSVSlPs3YMfkw-b8wkq7yFIiBxyDuL5VY3CYwGBhRY-remZ97GWG4JRr6rrAUj7FncaQo48m9muPuh13QJsUPNkqGIN3j6Gl9g2fMb3Y9CWL66juV32Tx_te18vaApex0t0T3PS4VUoHVJPb6cAC-HT4yoX-LznQvnhO0kTOl0a5ToL9wrhuERBpYM2-FniZS2uZWo4S6fC8aPVS6fkAiosQIv2Y5vl7XDEMfC-J-wP8FlOPThDHEn9GsuBjP3yf6el6XMnuzxW_lIYQwN9hLomfNcmngbhT9YoYH4Y="
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "finance_assistant",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-709fe1cb-1ff3-46a4-8123-a23208617c48",
+                        "name": "calculate_monthly_savings",
+                        "response": {
+                          "status": "success",
+                          "monthly_savings": 1290.21,
+                          "total_contributed": 46447.61,
+                          "interest_earned": 3552.39,
+                          "report": "To reach $50,000 in 3 years with a 5.0% annual return, you need to save $1,290.21 per month. You'll contribute $46,447.61 total, with the rest coming from investment returns."
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1771785078.706432
+        }
+      ],
+      "session_input": {
+        "app_name": "finance_assistant",
+        "user_id": "user"
+      },
+      "creation_timestamp": 1771785089.382873
+    },
+    {
+      "eval_id": "ms_negative_invalid_target",
+      "conversation": [
+        {
+          "invocation_id": "e-81232224-c408-485a-920e-3f6cd9eef7fc",
+          "user_content": {
+            "parts": [
+              {
+                "text": "How much should I save monthly to reach $0 in 4 years at 0.05 annual return?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "It looks like the target amount needs to be a positive number for this calculation. What positive target amount would you like to reach?",
+                "thought_signature": "CpsDAb4-9vtAGn0pMJnFbPMAITg_OL2uwZ4-r59FIlF3ctZ_nMvjDmsiP4_N1QP-vEl3v0DmGRSba8uFP5cG5DtJiLF5heMTP5p0wKoaBLZMkMNY56VVvC8bCA61yUP67IgFKzLrAjZ8bWzCUdMuEpz6z6_M3iC9mU1KHifzyGwhjSNBGB4XRAZ7Bhs6RhTx8sEynTemt6CKvwO6sa_YsEfnw4CONKx9PJDS7vjIdzHiJGoW-dqNGoMrIutaXPortHBqwfXBigGwakcIwuDNOiE-6AjN3uF7qCcmn_DpFPprMqDT5l-Ahp-PCGfTFYHnOtCnM4yDOIb3zHJN-8wA873xH_-YqYYlrQUOk7EKmcTU91FrVSbys-W4olY7BfOtT3NjjtIcWcM64iVGJglElYpTHIjFby3ScdB2xSDUgwkWvVaxFp_4Fwqk7zALhgfhBixOHXKG_oMrXC8uejKdb6aI82W8mWuAyWN8dWHmX5jOHhCqG4Qz28onVowzY_RrigIHvkHdbhF1cOKR0xIx5iUxtF8RC0V1xmZIb2Ag"
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "finance_assistant",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-17bb8293-4a97-4fd2-a064-936fd99963bc",
+                        "args": {
+                          "annual_return": 0.05,
+                          "years": 4,
+                          "target_amount": 0
+                        },
+                        "name": "calculate_monthly_savings"
+                      },
+                      "thought_signature": "Cp8IAb4-9vurMkWdeFXuv17XMp7sEDTjme7UbExohGEDkZk8qvQIyXLqFdBhT6Scu8Da82-zDpyuiJvKPwUE-Q4ndC1lchUprbtlIzr6-bwb4QrenEIJACsmGNUCL01UgwekTocCf5DdrsGdA4Np3C2KUHAB--fATDZen_g-0ykl_XHhpL6rd8bwweEEDZ2eHXisTbyMQ2oYkpvGrl49cOUKwej781VxBUXgcO3UT4nUzfy84_Tyq97uD_PgiAqV8nQ9vWjHhbU5BJP7Ry4Ioqfwr65PTXgvluZpbH84JvYK_LinkzSKe-JXR7nlu-JwuJOOei8exOt85fypd9Qjaq6oF26bkDXuKbbYy_U7WoCHKvI6iT8VPqPan35m9pW2nWQdeieRm8n3DqROtsZPIU7rtf8jAHVWgUoelpi-7kpssCOIiGCAA6acgu4V3DX62nwSzND2VrSuDXGBFXFKvT8ikkwR0guKY45ELcOjGB10TRwKDgLfP1bOpOAXZi6ckOwvlCUnjWwyr6-foUmQV3qO6oodnqgrJPWcWWTSBG9N1Ib5h5RGSsVq1bCcowbCOpux29ZK1AfkcL_yumFu7MFgZNG_ozd6oJgbufoVGhqWhVQ2XF2_E4Kz1lDG2UekNCwmYHgK_bXNTx1Th9XtthkBj1roo-fiPKWsIPtll2Q6OwIN8yDNKiSlYScbyH8TfSM9S2SKKIQysa2WjxVuoZoHrYlIFuOj6xIZACmtkXPTJ9YDNhcEGbIqIuhPy01izciJ0oIH-V1_k8NI_9eC1zpMDJwfXNnHaf6IODeDqBL6mMWcgWfhGo_rlZ5TMSerDv2SnFQR8EWMbxn5DxB1vjjCPIPjPRGBFPppKlwna89rCye6HUTA_miCtqXEdrFMHrdbfEEeVRGBSA8iNcLz1hzPqvnNIQavAXREsWOZvNxcapyqH2bV303DvucWRt6ktNc5cHGArWWJJIiXQef45MC-i2tsyMyawcGYsJntDyRpDi6pB68WhsESSAB8bhx0zJ_-NTSw6ZV3m678FVuQpyyRYMWIFQgkUvmHk9o_TfRdQOndQL3PVI9n5AO7Mg0V6gnq7Oz9Um9y_WfbOQyR6mFGJm4bnIzy4pYRwhYjt-TRBvwhQEFcBV7gpfVLmzGgPwRIQwA95ljK7r-Uw3hke_m_0HA0fdRzIRwUp4VqOiqKzhuOZNsGUgHRWd_BeeLhFgvb_X5LQFjt5613ByPufayEAfUc7UaM5eSG7AKRr0oIv58bVIEQ6Iob78Spwk6uc0AHCRum1lbpvTwAyd66y2R5PZ_TJR0AD_hGmE8SE3O3COe8gceelXJhSGH7uQ7Iby1cHOUytTHvdt6tRTFI9cxVuiRksOfEJbCiJ6duL7gE06BYw29f8RTMSfHtV8OaDiM="
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "finance_assistant",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-17bb8293-4a97-4fd2-a064-936fd99963bc",
+                        "name": "calculate_monthly_savings",
+                        "response": {
+                          "status": "error",
+                          "error": "Invalid target amount",
+                          "report": "Error: Savings target must be positive."
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1771785096.241724
+        }
+      ],
+      "session_input": {
+        "app_name": "finance_assistant",
+        "user_id": "user"
+      },
+      "creation_timestamp": 1771785106.5889459
+    }
+  ],
+  "creation_timestamp": 1771784665.200035
+}
