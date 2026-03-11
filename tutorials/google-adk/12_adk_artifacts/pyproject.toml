@@ -1,0 +1,9 @@
+[project]
+name = "12-adk-artifacts"
+version = "0.1.0"
+description = "ADK artifacts tutorial"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "google-adk==1.23.0",
+]
