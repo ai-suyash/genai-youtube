@@ -1,0 +1,10 @@
+[project]
+name = "13-adk-plugins"
+version = "0.1.0"
+description = "ADK plugins tutorial"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "google-adk>=1.21.0",
+    "python-dotenv>=1.0.1",
+]

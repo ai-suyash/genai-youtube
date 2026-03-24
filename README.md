@@ -28,13 +28,14 @@ This repo hosts code and assets from our YouTube tutorials.
 
 - ADK #10 - **[Context Management in Google ADK | Session vs State vs Memory (Concept Walkthrough)](https://youtu.be/UncyNladiX0)**
 
-- ADK #11 - **[Evaluating AI Agents in Google ADK | Hands-On Demo)](https://youtu.be/kJfzjQyshbA)** - [Code](tutorials/google-adk/11_adk_evaluation)
+- ADK #11 - **[Evaluating AI Agents in Google ADK | Hands-On Demo](https://youtu.be/kJfzjQyshbA)** - [Code](tutorials/google-adk/11_adk_evaluation)
 
-- ADK #12 - **[Google ADK Artifacts Explained | Save, Version, and Reuse Agent Files)](https://youtu.be/sHqc8TVPEn8)** - [Code](tutorials/google-adk/12_adk_artifacts)
+- ADK #12 - **[Google ADK Artifacts Explained | Save, Version, and Reuse Agent Files](https://youtu.be/sHqc8TVPEn8)** - [Code](tutorials/google-adk/12_adk_artifacts)
+
+- ADK #13 - **[Google ADK Plugins Demo | Logging and Guardrails](https://youtu.be/4tntP0tW52U)** — [Code](tutorials/google-adk/13_adk_plugins)
 
 
 ### Function Calling (with Gemini)
 - Part 1 - **[Inside Function Calling: How LLMs Take Real-World Actions](https://youtu.be/VIDEO1)** — [Code](tutorials/function-calling/)
 - Part 2 - **[Function Calling in Action: LLMs Running Real Code (Step-by-Step Example)](https://youtu.be/IWpq4KubUCc)** — [Code](tutorials/function-calling/)
 - Part 3 - **[Auto Function Calling in LLMs: OpenAPI Schemas & Tips](https://youtu.be/ePQ_vFhHZfs)** — [Code](tutorials/function-calling/)
-
