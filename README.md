@@ -7,6 +7,13 @@ This repo hosts code and assets from our YouTube tutorials.
 
 
 ## All Video tutorials
+### Prototype to Production with Google ADK
+#### CODE : [ADK Production Agent](tutorials/ai-agent-prototype-to-production/adk-production-agent) 
+- P2P #1 - **[Prototype to Production with Google ADK: What This Playlist Covers](https://youtu.be/6u1xkO1rADM)**
+
+- P2P #2 - **[Production Ready AI Agent Project Setup | Google ADK](https://youtu.be/3ovOdhyIhJg)**
+
+
 ### Google Agent Development Kit (ADK)
 - ADK #1 - **[Build Your First AI Agent with Google ADK | Hands-On Walkthrough](https://youtu.be/NU05aTvRiJM)** — [Code](tutorials/google-adk/01_first_agent) 
 
