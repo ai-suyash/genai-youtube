@@ -12,14 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Read base64-encoded dummy source tarball from GCS for initial Agent Engine creation
-# CI/CD pipelines will update with actual source code after creation
-# Note: The file is already base64-encoded to avoid binary corruption when reading via Terraform
-data "google_storage_bucket_object_content" "dummy_source_b64" {
-  name   = "dummy/source-b64.txt"
-  bucket = "agent-starter-pack"
-}
-
 resource "google_vertex_ai_reasoning_engine" "app" {
   for_each = local.deploy_project_ids
 
@@ -60,7 +52,7 @@ resource "google_vertex_ai_reasoning_engine" "app" {
 
     source_code_spec {
       inline_source {
-        source_archive = trimspace(data.google_storage_bucket_object_content.dummy_source_b64.content)
+        source_archive = filebase64("${path.module}/fixtures/dummy-source.tar.gz")
       }
 
       python_spec {
@@ -80,6 +72,11 @@ resource "google_vertex_ai_reasoning_engine" "app" {
     ]
   }
 
-  # Make dependencies conditional to avoid errors.
-  depends_on = [google_project_service.deploy_project_services]
+  # Ensure APIs, service account, IAM bindings, and storage are all ready
+  # before creating the Agent Engine resource
+  depends_on = [
+    google_project_service.deploy_project_services,
+    google_project_iam_member.app_sa_roles,
+    google_storage_bucket.logs_data_bucket,
+  ]
 }

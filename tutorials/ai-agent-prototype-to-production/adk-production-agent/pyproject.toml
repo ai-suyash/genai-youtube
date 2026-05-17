@@ -90,6 +90,11 @@ build-backend = "hatchling.build"
 [tool.pytest.ini_options]
 pythonpath = "."
 asyncio_default_fixture_loop_scope = "function"
+addopts = "--no-header"
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::UserWarning",
+]
 
 [tool.hatch.build.targets.wheel]
 packages = ["app","frontend"]
@@ -103,7 +108,7 @@ base_template = "adk"
 agent_directory = "app"
 
 # Generation context
-generated_at = "2026-04-05T16:44:22.879705+00:00"
+generated_at = "2026-04-09T03:36:59.284751+00:00"
 asp_version = "0.40.1"
 
 [tool.agent-starter-pack.create_params]
