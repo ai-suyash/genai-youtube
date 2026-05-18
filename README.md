@@ -5,6 +5,7 @@ This repo hosts code and assets from our YouTube tutorials.
 📺 Watch the channel: https://youtube.com/@suyashai  
 ▶️ Playlists: https://youtube.com/@suyashai/playlists
 
+> Check out our latest playlist to learn how to go from prototype to production
 
 ## All Video tutorials
 ### Prototype to Production with Google ADK
