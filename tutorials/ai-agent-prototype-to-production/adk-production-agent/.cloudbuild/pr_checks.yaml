@@ -16,6 +16,7 @@ steps:
   # Install uv package manager and sync dependencies
   - name: "python:3.12-slim"
     id: install-dependencies
+    dir: "tutorials/ai-agent-prototype-to-production/adk-production-agent"
     entrypoint: /bin/bash
     args:
       - "-c"
@@ -27,6 +28,7 @@ steps:
   # Run unit tests using pytest
   - name: "python:3.12-slim"
     id: unit-tests
+    dir: "tutorials/ai-agent-prototype-to-production/adk-production-agent"
     entrypoint: /bin/bash
     args:
       - "-c"
@@ -38,6 +40,7 @@ steps:
   # Run integration tests
   - name: "python:3.12-slim"
     id: integration-tests
+    dir: "tutorials/ai-agent-prototype-to-production/adk-production-agent"
     entrypoint: /bin/bash
     args:
       - "-c"

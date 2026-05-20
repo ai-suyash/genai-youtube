@@ -27,14 +27,13 @@ resource "google_cloudbuild_trigger" "pr_checks" {
     }
   }
 
-  filename = ".cloudbuild/pr_checks.yaml"
+  filename = "tutorials/ai-agent-prototype-to-production/adk-production-agent/.cloudbuild/pr_checks.yaml"
   included_files = [
-    "app/**",
-    "data_ingestion/**",
-    "tests/**",
-    "deployment/**",
-    "uv.lock",
-  
+    "tutorials/ai-agent-prototype-to-production/adk-production-agent/app/**",
+    "tutorials/ai-agent-prototype-to-production/adk-production-agent/data_ingestion/**",
+    "tutorials/ai-agent-prototype-to-production/adk-production-agent/tests/**",
+    "tutorials/ai-agent-prototype-to-production/adk-production-agent/deployment/**",
+    "tutorials/ai-agent-prototype-to-production/adk-production-agent/uv.lock",
   ]
   include_build_logs = "INCLUDE_BUILD_LOGS_WITH_STATUS"
   depends_on = [
@@ -60,13 +59,13 @@ resource "google_cloudbuild_trigger" "cd_pipeline" {
     }
   }
 
-  filename = ".cloudbuild/staging.yaml"
+  filename = "tutorials/ai-agent-prototype-to-production/adk-production-agent/.cloudbuild/staging.yaml"
   included_files = [
-    "app/**",
-    "data_ingestion/**",
-    "tests/**",
-    "deployment/**",
-    "uv.lock"
+    "tutorials/ai-agent-prototype-to-production/adk-production-agent/app/**",
+    "tutorials/ai-agent-prototype-to-production/adk-production-agent/data_ingestion/**",
+    "tutorials/ai-agent-prototype-to-production/adk-production-agent/tests/**",
+    "tutorials/ai-agent-prototype-to-production/adk-production-agent/deployment/**",
+    "tutorials/ai-agent-prototype-to-production/adk-production-agent/uv.lock",
   ]
   include_build_logs = "INCLUDE_BUILD_LOGS_WITH_STATUS"
   substitutions = {
@@ -95,7 +94,7 @@ resource "google_cloudbuild_trigger" "deploy_to_prod_pipeline" {
   repository_event_config {
     repository = "projects/${var.cicd_runner_project_id}/locations/${var.region}/connections/${var.host_connection_name}/repositories/${var.repository_name}"
   }
-  filename = ".cloudbuild/deploy-to-prod.yaml"
+  filename = "tutorials/ai-agent-prototype-to-production/adk-production-agent/.cloudbuild/deploy-to-prod.yaml"
   include_build_logs = "INCLUDE_BUILD_LOGS_WITH_STATUS"
   approval_config {
     approval_required = true
