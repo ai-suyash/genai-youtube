@@ -13,8 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# TESTING CI/CD Pipeline
-
 import datetime
 from zoneinfo import ZoneInfo
 
